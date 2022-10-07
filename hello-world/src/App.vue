@@ -5,6 +5,8 @@
     <div>{{ greet }} {{ name }}</div>
     <div v-text="channel"></div>
     <div v-html="channelBold"></div>
+    <div v-bind:id="headingId">Heading</div>
+    <button v-bind:disabled="isDisabled">Button</button>
   </div>
 </template>
 
@@ -19,6 +21,8 @@ export default {
       name: "Bro",
       channel: "MBrian Website",
       channelBold: "<b>MBrian Website</b>",
+      headingId: "heading",
+      isDisabled: true,
     };
   },
 };
