@@ -4,6 +4,7 @@
   <div>
     <div>{{ greet }} {{ name }}</div>
     <div v-text="channel"></div>
+    <div v-html="channelBold"></div>
   </div>
 </template>
 
@@ -17,6 +18,7 @@ export default {
       greet: "Hello",
       name: "Bro",
       channel: "MBrian Website",
+      channelBold: "<b>MBrian Website</b>",
     };
   },
 };
