@@ -26,6 +26,7 @@
     <h2 v-bind:style="[headerStyleObject, borderStyleObject]">
       Array Object Style
     </h2>
+    <h2 :style="[headerStyleObject, borderStyleObject]">V-Bind Short Hand</h2>
   </div>
 </template>
 
