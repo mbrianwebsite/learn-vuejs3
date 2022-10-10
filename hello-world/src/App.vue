@@ -22,6 +22,10 @@
     >
       Bold and Italic
     </h1>
+    <h2 v-bind:style="headerStyleObject">Object Style</h2>
+    <h2 v-bind:style="[headerStyleObject, borderStyleObject]">
+      Array Object Style
+    </h2>
   </div>
 </template>
 
@@ -40,6 +44,13 @@ export default {
       isDisabled: true,
       status: "toitalic",
       isItalic: true,
+      headerStyleObject: {
+        color: "orange",
+        fontWeight: 900,
+      },
+      borderStyleObject: {
+        border: "1px solid green",
+      },
     };
   },
 };
