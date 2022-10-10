@@ -1,16 +1,17 @@
 <template>
   <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
   <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-  <h2 v-if="num === 0">This Number Is Zero</h2>
-  <h2 v-else-if="num < 0">This Number Is Negative</h2>
-  <h2 v-else-if="num > 0">This Number Is Positive</h2>
-  <h2 v-else>This Not A Number</h2>
-  <template v-if="display == true">
-    <h2>Muhammad Brian</h2>
-    <h2>Website Developer</h2>
-    <h2>MBrian Website</h2>
-  </template>
-  <div v-show="showElement">V-Show</div>
+  <h2 v-for="(name, index) in names" :key="name">{{ index }} {{ name }}</h2>
+  <h2 v-for="name in fullNames" :key="name.first">
+    {{ name.first }} {{ name.last }}
+  </h2>
+  <div v-for="actor in actors" :key="actor.name">
+    <h2>{{ actor.name }}</h2>
+    <h3 v-for="movie in actor.movies" :key="movie">{{ movie }}</h3>
+  </div>
+  <h2 v-for="(value, index, key) in myInfo" :key="value">
+    {{ key }} {{ index }} {{ value }}
+  </h2>
 </template>
 
 <script>
@@ -20,9 +21,20 @@ export default {
   name: "App",
   data() {
     return {
-      num: "This not a number",
-      display: true,
-      showElement: false,
+      names: ["Muhammad", "Brian", "Ivan"],
+      fullNames: [
+        { first: "Muhammad", last: "Brian" },
+        { first: "Ivan", last: "Haris" },
+      ],
+      actors: [
+        { name: "C. Bale", movies: ["Batman", "The Prestige"] },
+        { name: "L. D. Caprio", movies: ["Titanic", "Inception"] },
+      ],
+      myInfo: {
+        myName: "Muhammad",
+        myChannel: "MBrian Website",
+        myCourse: "Vue",
+      },
     };
   },
 };
