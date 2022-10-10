@@ -5,12 +5,12 @@
   <h2 v-else-if="num < 0">This Number Is Negative</h2>
   <h2 v-else-if="num > 0">This Number Is Positive</h2>
   <h2 v-else>This Not A Number</h2>
-
   <template v-if="display == true">
     <h2>Muhammad Brian</h2>
     <h2>Website Developer</h2>
     <h2>MBrian Website</h2>
   </template>
+  <div v-show="showElement">V-Show</div>
 </template>
 
 <script>
@@ -22,6 +22,7 @@ export default {
     return {
       num: "This not a number",
       display: true,
+      showElement: false,
     };
   },
 };
