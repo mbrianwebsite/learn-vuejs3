@@ -1,17 +1,9 @@
 <template>
   <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
   <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-  <h2 v-for="(name, index) in names" :key="name">{{ index }} {{ name }}</h2>
-  <h2 v-for="name in fullNames" :key="name.first">
-    {{ name.first }} {{ name.last }}
-  </h2>
-  <div v-for="actor in actors" :key="actor.name">
-    <h2>{{ actor.name }}</h2>
-    <h3 v-for="movie in actor.movies" :key="movie">{{ movie }}</h3>
+  <div v-for="name in names" :key="name">
+    <h2 v-if="name === 'Brian'">{{ name }}</h2>
   </div>
-  <h2 v-for="(value, index, key) in myInfo" :key="value">
-    {{ key }} {{ index }} {{ value }}
-  </h2>
 </template>
 
 <script>
@@ -22,19 +14,6 @@ export default {
   data() {
     return {
       names: ["Muhammad", "Brian", "Ivan"],
-      fullNames: [
-        { first: "Muhammad", last: "Brian" },
-        { first: "Ivan", last: "Haris" },
-      ],
-      actors: [
-        { name: "C. Bale", movies: ["Batman", "The Prestige"] },
-        { name: "L. D. Caprio", movies: ["Titanic", "Inception"] },
-      ],
-      myInfo: {
-        myName: "Muhammad",
-        myChannel: "MBrian Website",
-        myCourse: "Vue",
-      },
     };
   },
 };
