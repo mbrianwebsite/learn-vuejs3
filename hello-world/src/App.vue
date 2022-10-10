@@ -1,9 +1,10 @@
 <template>
   <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
   <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-  <div v-for="name in names" :key="name">
-    <h2 v-if="name === 'Brian'">{{ name }}</h2>
-  </div>
+  <h2>Inline = {{ 1 + 2 + 3 }}</h2>
+  <h2>Add = {{ add() }}</h2>
+  <h2>Plus = {{ plus(5, 6, 7) }}</h2>
+  <h2>Multiply = {{ multiply(10) }}</h2>
 </template>
 
 <script>
@@ -13,8 +14,19 @@ export default {
   name: "App",
   data() {
     return {
-      names: ["Muhammad", "Brian", "Ivan"],
+      baseMultiplier: 5,
     };
+  },
+  methods: {
+    add() {
+      return 2 + 3 + 5;
+    },
+    plus(a, b, c) {
+      return a + b + c;
+    },
+    multiply(number) {
+      return number * this.baseMultiplier;
+    },
   },
 };
 </script>
