@@ -1,28 +1,39 @@
 <template>
   <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
   <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-  <h2>{{ thename }}</h2>
   <div>
-    <button @click="changeName($event), decrement2(2, $event)">
-      Change Name
-    </button>
+    <pre>
+      {{ JSON.stringify(formValue, null, 2) }}
+    </pre>
   </div>
-  <br />
-  <h2>{{ count }}</h2>
-  <div>
-    <button @click="count = count - 1">Decrease Value</button>
-    <button @click="count = count + 1">Increase Value</button>
-  </div>
-  <br />
-  <h2>{{ number }}</h2>
-  <div>
-    <button @click="decrement2(2, $event)">
-      Decrease Value -2 (Function, Event)
-    </button>
-    <button @click="decrement()">Decrease Value (Function)</button>
-    <button @click="increment()">Increase Value (Function)</button>
-    <button @click="increment2(2)">Increase Value +2 (Function)</button>
-  </div>
+  <form>
+    <div>
+      <label for="name">Name</label>
+      <input type="text" id="name" v-model="formValue.name" />
+    </div>
+    <div>
+      <label for="bio">Bio</label>
+      <textarea id="bio" v-model="formValue.bio" />
+    </div>
+    <div>
+      <label for="country">Country</label>
+      <select type="text" id="country" v-model="formValue.country">
+        <option value="Indonesia">Indonesia</option>
+        <option value="Saudi Arabia">Saudi Arabia</option>
+        <option value="United State">United State</option>
+        <option value="Germany">Germany</option>
+      </select>
+    </div>
+    <div>
+      <label for="hobby">Hobby</label>
+      <select multiple id="hobby" v-model="formValue.hobby">
+        <option value="Soccer">Soccer</option>
+        <option value="Tennis">Tennis</option>
+        <option value="Golf">Golf</option>
+        <option value="Racing">Racing</option>
+      </select>
+    </div>
+  </form>
 </template>
 
 <script>
@@ -32,30 +43,15 @@ export default {
   name: "App",
   data() {
     return {
-      thename: "Muhammad Brian",
-      count: 0,
-      number: 0,
+      formValue: {
+        name: "",
+        bio: "",
+        country: "",
+        hobby: "",
+      },
     };
   },
-  methods: {
-    changeName(event) {
-      this.thename = "Ivan Haris";
-      console.log("Event", event);
-    },
-    increment() {
-      this.number += 1;
-    },
-    decrement() {
-      this.number -= 1;
-    },
-    increment2(num) {
-      this.number += num;
-    },
-    decrement2(num, event) {
-      this.number -= num;
-      console.log("Event", event);
-    },
-  },
+  methods: {},
 };
 </script>
 
@@ -67,5 +63,31 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+label {
+  font-weight: 600;
+  display: flex;
+  margin-bottom: 5px;
+}
+
+input + label {
+  font-weight: 600;
+  display: inline-flex;
+  margin-bottom: 20px;
+}
+
+input[type="text"],
+textarea,
+select {
+  display: block;
+  width: 400px;
+  padding: 6px 12px;
+  font-size: 14;
+  line-height: 1.43;
+  color: #555;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 </style>
