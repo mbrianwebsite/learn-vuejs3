@@ -1,10 +1,24 @@
 <template>
   <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
   <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-  <h2>Inline = {{ 1 + 2 + 3 }}</h2>
-  <h2>Add = {{ add() }}</h2>
-  <h2>Plus = {{ plus(5, 6, 7) }}</h2>
-  <h2>Multiply = {{ multiply(10) }}</h2>
+  <h2>{{ name }}</h2>
+  <div>
+    <button v-on:click="name = 'Ivan Haris'">Change Name</button>
+  </div>
+  <br />
+  <h2>{{ count }}</h2>
+  <div>
+    <button v-on:click="count = count - 1">Decrease Value</button>
+    <button v-on:click="count = count + 1">Increase Value</button>
+  </div>
+  <br />
+  <h2>{{ number }}</h2>
+  <div>
+    <button v-on:click="decrement2(2)">Decrease Value -2 (Function)</button>
+    <button v-on:click="decrement()">Decrease Value (Function)</button>
+    <button v-on:click="increment()">Increase Value (Function)</button>
+    <button v-on:click="increment2(2)">Increase Value +2 (Function)</button>
+  </div>
 </template>
 
 <script>
@@ -14,18 +28,23 @@ export default {
   name: "App",
   data() {
     return {
-      baseMultiplier: 5,
+      name: "Muhammad Brian",
+      count: 0,
+      number: 0,
     };
   },
   methods: {
-    add() {
-      return 2 + 3 + 5;
+    increment() {
+      this.number += 1;
     },
-    plus(a, b, c) {
-      return a + b + c;
+    decrement() {
+      this.number -= 1;
     },
-    multiply(number) {
-      return number * this.baseMultiplier;
+    increment2(num) {
+      this.number += num;
+    },
+    decrement2(num) {
+      this.number -= num;
     },
   },
 };
