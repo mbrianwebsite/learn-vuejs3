@@ -1,23 +1,27 @@
 <template>
   <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
   <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-  <h2>{{ name }}</h2>
+  <h2>{{ thename }}</h2>
   <div>
-    <button v-on:click="name = 'Ivan Haris'">Change Name</button>
+    <button @click="changeName($event), decrement2(2, $event)">
+      Change Name
+    </button>
   </div>
   <br />
   <h2>{{ count }}</h2>
   <div>
-    <button v-on:click="count = count - 1">Decrease Value</button>
-    <button v-on:click="count = count + 1">Increase Value</button>
+    <button @click="count = count - 1">Decrease Value</button>
+    <button @click="count = count + 1">Increase Value</button>
   </div>
   <br />
   <h2>{{ number }}</h2>
   <div>
-    <button v-on:click="decrement2(2)">Decrease Value -2 (Function)</button>
-    <button v-on:click="decrement()">Decrease Value (Function)</button>
-    <button v-on:click="increment()">Increase Value (Function)</button>
-    <button v-on:click="increment2(2)">Increase Value +2 (Function)</button>
+    <button @click="decrement2(2, $event)">
+      Decrease Value -2 (Function, Event)
+    </button>
+    <button @click="decrement()">Decrease Value (Function)</button>
+    <button @click="increment()">Increase Value (Function)</button>
+    <button @click="increment2(2)">Increase Value +2 (Function)</button>
   </div>
 </template>
 
@@ -28,12 +32,16 @@ export default {
   name: "App",
   data() {
     return {
-      name: "Muhammad Brian",
+      thename: "Muhammad Brian",
       count: 0,
       number: 0,
     };
   },
   methods: {
+    changeName(event) {
+      this.thename = "Ivan Haris";
+      console.log("Event", event);
+    },
     increment() {
       this.number += 1;
     },
@@ -43,8 +51,9 @@ export default {
     increment2(num) {
       this.number += num;
     },
-    decrement2(num) {
+    decrement2(num, event) {
       this.number -= num;
+      console.log("Event", event);
     },
   },
 };
