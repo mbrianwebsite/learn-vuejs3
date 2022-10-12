@@ -6,10 +6,23 @@
       {{ JSON.stringify(formValue, null, 2) }}
     </pre>
   </div>
-  <form @submit="submitForm">
+  <form @submit.prevent="submitForm">
     <div>
       <label for="name">Name</label>
-      <input type="text" id="name" v-model="formValue.name" />
+      <input type="text" id="name" v-model.trim="formValue.name" />
+    </div>
+    <div>
+      <label for="nickName">Nick Name</label>
+      <input type="text" id="nickName" v-model.trim.lazy="formValue.nickName" />
+    </div>
+    <div>
+      <label for="age">Age</label>
+      <input
+        @keyup.enter="submitForm"
+        type="number"
+        id="age"
+        v-model.number="formValue.age"
+      />
     </div>
     <div>
       <label for="bio">Bio</label>
@@ -91,6 +104,8 @@ export default {
     return {
       formValue: {
         name: "",
+        nickName: "",
+        age: null,
         bio: "",
         country: "",
         hobby: [],
@@ -101,8 +116,7 @@ export default {
     };
   },
   methods: {
-    submitForm(event) {
-      event.preventDefault();
+    submitForm() {
       console.log("Form Values", this.formValue);
     },
   },
@@ -132,6 +146,7 @@ input + label {
 }
 
 input[type="text"],
+input[type="number"],
 textarea,
 select {
   display: block;
