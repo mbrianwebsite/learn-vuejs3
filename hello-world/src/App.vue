@@ -6,7 +6,7 @@
       {{ JSON.stringify(formValue, null, 2) }}
     </pre>
   </div>
-  <form>
+  <form @submit="submitForm">
     <div>
       <label for="name">Name</label>
       <input type="text" id="name" v-model="formValue.name" />
@@ -17,7 +17,7 @@
     </div>
     <div>
       <label for="country">Country</label>
-      <select type="text" id="country" v-model="formValue.country">
+      <select id="country" v-model="formValue.country">
         <option value="Indonesia">Indonesia</option>
         <option value="Saudi Arabia">Saudi Arabia</option>
         <option value="United State">United State</option>
@@ -33,6 +33,52 @@
         <option value="Racing">Racing</option>
       </select>
     </div>
+    <div>
+      <input
+        type="checkbox"
+        id="status"
+        v-model="formValue.status"
+        true-value="yes"
+        false-value="no"
+      />
+      <label for="status">Are you a Programmer</label>
+    </div>
+    <div>
+      <div>Skill Set</div>
+      <input
+        type="checkbox"
+        id="html"
+        value="html"
+        v-model="formValue.skillSet"
+      />
+      <label for="html">html</label>
+      <input
+        type="checkbox"
+        id="css"
+        value="css"
+        v-model="formValue.skillSet"
+      />
+      <label for="css">css</label>
+      <input type="checkbox" id="js" value="js" v-model="formValue.skillSet" />
+      <label for="js">js</label>
+    </div>
+    <div>
+      <div>Year of Experience</div>
+      <input type="radio" id="0-2" value="0-2" v-model="formValue.experience" />
+      <label for="0-2">0-2</label>
+      <input type="radio" id="2-6" value="2-6" v-model="formValue.experience" />
+      <label for="2-6">2-6</label>
+      <input type="radio" id="6-8" value="6-8" v-model="formValue.experience" />
+      <label for="6-8">6-8</label>
+      <input
+        type="radio"
+        id="8-10"
+        value="8-10"
+        v-model="formValue.experience"
+      />
+      <label for="8-10">8-10</label>
+    </div>
+    <button>Submit</button>
   </form>
 </template>
 
@@ -47,11 +93,19 @@ export default {
         name: "",
         bio: "",
         country: "",
-        hobby: "",
+        hobby: [],
+        status: "no",
+        skillSet: [],
+        experience: "",
       },
     };
   },
-  methods: {},
+  methods: {
+    submitForm(event) {
+      event.preventDefault();
+      console.log("Form Values", this.formValue);
+    },
+  },
 };
 </script>
 
@@ -60,7 +114,7 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  /* text-align: center; */
   color: #2c3e50;
   margin-top: 60px;
 }
