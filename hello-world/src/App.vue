@@ -18,6 +18,8 @@
     Push Item
   </button>
   <h2>Total - {{ total }}</h2>
+  <h2>Method Total - {{ getTotal() }}</h2>
+  <input v-model="country" type="text" />
 </template>
 
 <script>
@@ -46,14 +48,24 @@ export default {
           price: 300,
         },
       ],
+      country: "",
     };
   },
-  methods: {},
+  methods: {
+    getTotal() {
+      console.log("getTotal");
+      return this.items.reduce(
+        (total, curr) => (total = total + curr.price),
+        0
+      );
+    },
+  },
   computed: {
     fullName() {
       return `${this.firstName} ${this.lastName}`;
     },
     total() {
+      console.log("total");
       return this.items.reduce(
         (total, curr) => (total = total + curr.price),
         0
