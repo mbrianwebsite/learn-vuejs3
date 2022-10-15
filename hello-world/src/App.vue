@@ -1,11 +1,23 @@
 <template>
   <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
   <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-  <h2 v-once>{{ name }}</h2>
-  <div>
-    <button @click="name = 'Batman'">Click</button>
-    <h2 v-pre>{{ name }}</h2>
-  </div>
+  <h1>Full Name - {{ firstName }} {{ lastName }}</h1>
+  <h1>Computed Full Name - {{ fullName }}</h1>
+  <h2>
+    Total - {{ items.reduce((total, curr) => (total = total + curr.price), 0) }}
+  </h2>
+  <button
+    @click="
+      items.push({
+        id: 1,
+        title: 'Phone',
+        price: 100,
+      })
+    "
+  >
+    Push Item
+  </button>
+  <h2>Total - {{ total }}</h2>
 </template>
 
 <script>
@@ -15,10 +27,39 @@ export default {
   name: "App",
   data() {
     return {
-      name: "Robin",
+      firstName: "Muhammmad",
+      lastName: "Brian",
+      items: [
+        {
+          id: 1,
+          title: "Phone",
+          price: 100,
+        },
+        {
+          id: 2,
+          title: "Tablet",
+          price: 200,
+        },
+        {
+          id: 3,
+          title: "TV",
+          price: 300,
+        },
+      ],
     };
   },
   methods: {},
+  computed: {
+    fullName() {
+      return `${this.firstName} ${this.lastName}`;
+    },
+    total() {
+      return this.items.reduce(
+        (total, curr) => (total = total + curr.price),
+        0
+      );
+    },
+  },
 };
 </script>
 
@@ -30,32 +71,5 @@ export default {
   /* text-align: center; */
   color: #2c3e50;
   margin-top: 60px;
-}
-
-label {
-  font-weight: 600;
-  display: flex;
-  margin-bottom: 5px;
-}
-
-input + label {
-  font-weight: 600;
-  display: inline-flex;
-  margin-bottom: 20px;
-}
-
-input[type="text"],
-input[type="number"],
-textarea,
-select {
-  display: block;
-  width: 400px;
-  padding: 6px 12px;
-  font-size: 14;
-  line-height: 1.43;
-  color: #555;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 4px;
 }
 </style>
