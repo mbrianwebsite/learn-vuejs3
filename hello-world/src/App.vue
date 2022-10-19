@@ -1,34 +1,10 @@
 <template>
-  <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
-  <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-  <h1>Full Name - {{ firstName }} {{ lastName }}</h1>
-  <h1>Computed Full Name - {{ fullName }}</h1>
-  <button @click="changeFullName">Change Full Name</button>
-
-  <h2>
-    Total - {{ items.reduce((total, curr) => (total = total + curr.price), 0) }}
-  </h2>
-  <button
-    @click="
-      items.push({
-        id: 1,
-        title: 'Phone',
-        price: 100,
-      })
-    "
-  >
-    Push Item
-  </button>
-  <h2>Total - {{ total }}</h2>
-  <h2>Method Total - {{ getTotal() }}</h2>
-  <input v-model="country" type="text" />
-  <template v-for="item in items" :key="item.id">
-    <h2 v-if="item.price > 100">{{ item.title }} {{ item.price }}</h2>
-  </template>
-
-  <h2 v-for="item in expensiveItems" :key="item.id">
-    {{ item.title }} {{ item.price }}
-  </h2>
+  <h2>Volume Tracker (0-20)</h2>
+  <h3>Current Volume {{ volume }}</h3>
+  <div>
+    <button @click="volume -= 2">Decrease</button>
+    <button @click="volume += 2">Increase</button>
+  </div>
 </template>
 
 <script>
@@ -38,60 +14,18 @@ export default {
   name: "App",
   data() {
     return {
-      firstName: "Muhammmad",
-      lastName: "Brian",
-      items: [
-        {
-          id: 1,
-          title: "Phone",
-          price: 100,
-        },
-        {
-          id: 2,
-          title: "Tablet",
-          price: 200,
-        },
-        {
-          id: 3,
-          title: "TV",
-          price: 300,
-        },
-      ],
-      country: "",
+      volume: 0,
     };
   },
-  methods: {
-    getTotal() {
-      console.log("getTotal");
-      return this.items.reduce(
-        (total, curr) => (total = total + curr.price),
-        0
-      );
-    },
-    changeFullName() {
-      this.fullName = "Ivan Haris";
-    },
-  },
-  computed: {
-    fullName: {
-      get() {
-        return `${this.firstName} ${this.lastName}`;
-      },
-      set(value) {
-        const names = value.split(" ");
-        this.firstName = names[0];
-        this.lastName = names[1];
-      },
-    },
-    total() {
-      console.log("total");
-      return this.items.reduce(
-        (total, curr) => (total = total + curr.price),
-        0
-      );
-    },
-    expensiveItems() {
-      return this.items.filter((item) => item.price > 100);
+  methods: {},
+  computed: {},
+  watch: {
+    volume(newValue, oldValue) {
+      if (newValue > oldValue && newValue === 16) {
+        alert(
+          "Listening to a high voulme for a long time may damage your hearing"
+        );
+      }
     },
   },
 };
