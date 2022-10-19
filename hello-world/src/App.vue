@@ -3,6 +3,8 @@
   <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
   <h1>Full Name - {{ firstName }} {{ lastName }}</h1>
   <h1>Computed Full Name - {{ fullName }}</h1>
+  <button @click="changeFullName">Change Full Name</button>
+
   <h2>
     Total - {{ items.reduce((total, curr) => (total = total + curr.price), 0) }}
   </h2>
@@ -66,10 +68,20 @@ export default {
         0
       );
     },
+    changeFullName() {
+      this.fullName = "Ivan Haris";
+    },
   },
   computed: {
-    fullName() {
-      return `${this.firstName} ${this.lastName}`;
+    fullName: {
+      get() {
+        return `${this.firstName} ${this.lastName}`;
+      },
+      set(value) {
+        const names = value.split(" ");
+        this.firstName = names[0];
+        this.lastName = names[1];
+      },
     },
     total() {
       console.log("total");
