@@ -1,10 +1,11 @@
 <template>
-  <h2>Hello Brian</h2>
+  <h2>Hello {{ name }} a.k.a {{ otherName }}</h2>
 </template>
 
 <script>
 export default {
   name: "GreetWord",
+  props: ["name", "otherName"],
 };
 </script>
 

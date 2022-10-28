@@ -1,5 +1,8 @@
 <template>
-  <GreetWord />
+  <GreetWord name="Muhammad" otherName="Ahmad" />
+  <GreetWord name="Brian" otherName="Adam" />
+  <GreetWord name="Ivan" otherName="Haris" />
+  <GreetWord :name="name" :otherName="channel" />
 </template>
 
 <script>
@@ -9,6 +12,12 @@ export default {
   name: "App",
   components: {
     GreetWord,
+  },
+  data() {
+    return {
+      name: "MBrian Website",
+      channel: "mbrianwebsite.com",
+    };
   },
 };
 </script>
