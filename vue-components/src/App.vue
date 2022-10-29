@@ -1,17 +1,20 @@
 <template>
-  <GreetWord name="Muhammad" otherName="Ahmad" />
-  <GreetWord name="Brian" otherName="Adam" />
-  <GreetWord name="Ivan" otherName="Haris" />
-  <GreetWord :name="name" :otherName="channel" />
+  <!-- <GreetWord name="Muhammad" otherName="Ahmad" /> -->
+  <!-- <GreetWord name="Brian" otherName="Adam" /> -->
+  <!-- <GreetWord name="Ivan" otherName="Haris" /> -->
+  <!-- <GreetWord :name="name" :otherName="channel" /> -->
+  <ArticleComp title="Article Title" :likes="50" :isPublished="false" />
 </template>
 
 <script>
-import GreetWord from "./components/GreetWord.vue";
+// import GreetWord from "./components/GreetWord.vue";
+import ArticleComp from "./components/ArticleComp.vue";
 
 export default {
   name: "App",
   components: {
-    GreetWord,
+    // GreetWord,
+    ArticleComp,
   },
   data() {
     return {
